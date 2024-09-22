@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { Aptos, NetworkToNetworkName, Network, AptosConfig, Account, Ed25519PrivateKey } = require('@aptos-labs/ts-sdk')
+const { Aptos, NetworkToNetworkName, Network, AptosConfig, Account, Ed25519PrivateKey, createObjectAddress, Serializer } = require('@aptos-labs/ts-sdk')
 const express = require('express')
 const { getPackageBytesToPublish, compilePackage } = require('./util')
 const app = express()
@@ -17,7 +17,17 @@ app.get('/build', async (req, res) => {
         privateKey: new Ed25519PrivateKey(process.env.PRIVATE_KEY)
     });
 
-    compilePackage("contracts/", "contracts/wrapper_coin.json", [{ name: "WrapperCoin", address: adminAccount.accountAddress }])
+    const accountInfo = await aptos.getAccountInfo({ accountAddress: adminAccount.accountAddress })
+    const nextSequence = parseInt(accountInfo.sequence_number) + 1
+
+    const serializer = new Serializer();
+    serializer.serializeStr("aptos_framework::object_code_deployment")
+    serializer.serializeU64(nextSequence)
+
+    let objectAddress = createObjectAddress(adminAccount.accountAddress, serializer.toUint8Array());
+    console.log("Object", objectAddress.toString());
+
+    compilePackage("contracts/", "contracts/wrapper_coin.json", [{ name: "WrapperCoin", address: objectAddress }])
 
     const { metadataBytes, byteCode } = getPackageBytesToPublish("./contracts/wrapper_coin.json")
 
