@@ -1,12 +1,20 @@
 require('dotenv').config()
 
 const { Aptos, NetworkToNetworkName, Network, AptosConfig, Account, Ed25519PrivateKey, createObjectAddress, Serializer } = require('@aptos-labs/ts-sdk')
+const cors = require("cors");
 const express = require('express')
 const { getPackageBytesToPublish, compilePackage } = require('./util')
 const app = express()
 const port = 3000
 
 const APTOS_NETWORK = NetworkToNetworkName[process.env.APTOS_NETWORK ?? Network.DEVNET]
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+app.use(cors(corsOptions))
 
 const config = new AptosConfig({ network: APTOS_NETWORK })
 const aptos = new Aptos(config);
@@ -42,7 +50,7 @@ app.get('/build', async (req, res) => {
     const result = {
         metadata: metadataBytes,
         byteCode: byteCode,
-        objectAddress: objectAddress
+        objectAddress: objectAddress.toString()
     }
 
     res.setHeader('Content-Type', 'application/json')
