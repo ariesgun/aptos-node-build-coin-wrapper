@@ -5,7 +5,7 @@ const cors = require("cors");
 const express = require('express')
 const { getPackageBytesToPublish, compilePackage } = require('./util')
 const app = express()
-const port = 3000
+const port = 3005
 
 const APTOS_NETWORK = NetworkToNetworkName[process.env.APTOS_NETWORK ?? Network.DEVNET]
 
