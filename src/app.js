@@ -42,6 +42,7 @@ app.get('/build', async (req, res) => {
     const result = {
         metadata: metadataBytes,
         byteCode: byteCode,
+        objectAddress: objectAddress
     }
 
     res.setHeader('Content-Type', 'application/json')
