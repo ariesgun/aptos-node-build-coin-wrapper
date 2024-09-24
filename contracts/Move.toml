@@ -5,8 +5,8 @@ authors = []
 
 [addresses]
 WrapperCoin="_"
-property_test="0xc55af7fbf1923333ecc2368eaf5630daf4ae458a47477ec1ff835c7d2f3f3ec0"
-fa_metadata="0x6AB028BA523D1511B0CFC7772CC4EFE9FE63A967C496D0C90CD93E0B342CE207"
+property_test="0x6a56893e3834c1ede12623c83835c898b12ec5c481f8b3f62be8d75ce8dfd002"
+fa_metadata="0xd9e99bdb67eb7af070cbfb89ae1bec20198b3fbd6d254d796a13bca20389faed"
 admin_addr="0x8158281cfa125b7d71b00e379a112b1ae7e92b364a62ef80e1804a31d68c845c"
 initial_creator_addr="0x8158281cfa125b7d71b00e379a112b1ae7e92b364a62ef80e1804a31d68c845c"
 
