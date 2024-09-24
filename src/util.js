@@ -25,7 +25,7 @@ function compilePackage(
     console.log("aptos is not installed. Please install it from the instructions on aptos.dev");
   }
 
-  const addressArg = namedAddresses.map(({ name, address }) => `${name}=${address}`).join(" ");
+  const addressArg = namedAddresses.map(({ name, address }) => `${name}=${address}`).join(",");
 
   // Assume-yes automatically overwrites the previous compiled version, only do this if you are sure you want to overwrite the previous version.
   const compileCommand = `aptos move build-publish-payload --json-output-file ${outputFile} --package-dir ${packageDir} --named-addresses ${addressArg} --assume-yes`;
