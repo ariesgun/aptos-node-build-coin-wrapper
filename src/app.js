@@ -35,7 +35,10 @@ app.get('/build', async (req, res) => {
     let objectAddress = createObjectAddress(adminAccount.accountAddress, serializer.toUint8Array());
     console.log("Object", objectAddress.toString());
 
-    compilePackage("contracts/", "contracts/wrapper_coin.json", [{ name: "WrapperCoin", address: objectAddress }])
+    compilePackage("contracts/", "contracts/wrapper_coin.json", [
+        { name: "WrapperCoin", address: objectAddress },
+        { name: "fa_metadata", address: req.query.fa_metadata }
+    ])
 
     const { metadataBytes, byteCode } = getPackageBytesToPublish("./contracts/wrapper_coin.json")
 

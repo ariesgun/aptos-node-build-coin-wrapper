@@ -5,10 +5,8 @@ authors = []
 
 [addresses]
 WrapperCoin="_"
-property_test="0x6a56893e3834c1ede12623c83835c898b12ec5c481f8b3f62be8d75ce8dfd002"
-fa_metadata="0xd9e99bdb67eb7af070cbfb89ae1bec20198b3fbd6d254d796a13bca20389faed"
-admin_addr="0x8158281cfa125b7d71b00e379a112b1ae7e92b364a62ef80e1804a31d68c845c"
-initial_creator_addr="0x8158281cfa125b7d71b00e379a112b1ae7e92b364a62ef80e1804a31d68c845c"
+tokenized_properties="0xdd8b2e087ab543aeda3dd1399f65c7f4705e985688d85c9627d2e7ee59876def"
+fa_metadata="_"
 
 [dev-addresses]
 
@@ -17,7 +15,7 @@ git = "https://github.com/aptos-labs/aptos-core.git"
 rev = "mainnet"
 subdir = "aptos-move/framework/aptos-framework"
 
-[dependencies.HelloNFT]
+[dependencies.TokenizedProperties]
 git = "https://github.com/ariesgun/aptos-tokenize-props.git"
 rev = "main"
 subdir = "contract"
